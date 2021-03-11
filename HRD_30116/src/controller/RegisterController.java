@@ -18,7 +18,7 @@ public class RegisterController implements Controller {
 		String city = req.getParameter("city");
 		
 		MemberDAO dao = MemberDAO.getInstance();
-		int result = dao.InsertMember(name, phone, address, grade, city);
+		int result = dao.insertMember(name, phone, address, grade, city);
 		
 		String path = "register.jsp";
 		

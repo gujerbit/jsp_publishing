@@ -1,24 +1,16 @@
 package vo;
 
-import java.sql.Timestamp;
-
 public class MoneyVO {
 	private int custno;
-	private int salenol;
-	private int pcost;
-	private int amount;
+	private String custname;
+	private String grade;
 	private int price;
-	private String pcode;
-	private Timestamp sdate;
 	
-	public MoneyVO(int custno, int salenol, int pcost, int amount, int price, String pcode, Timestamp sdate) {
+	public MoneyVO(int custno, String custname, String grade, int price) {
 		this.custno = custno;
-		this.salenol = salenol;
-		this.pcost = pcost;
-		this.amount = amount;
+		this.custname = custname;
+		this.grade = grade;
 		this.price = price;
-		this.pcode = pcode;
-		this.sdate = sdate;
 	}
 
 	public int getCustno() {
@@ -29,28 +21,20 @@ public class MoneyVO {
 		this.custno = custno;
 	}
 
-	public int getSalenol() {
-		return salenol;
+	public String getCustname() {
+		return custname;
 	}
 
-	public void setSalenol(int salenol) {
-		this.salenol = salenol;
+	public void setCustname(String custname) {
+		this.custname = custname;
 	}
 
-	public int getPcost() {
-		return pcost;
+	public String getGrade() {
+		return grade;
 	}
 
-	public void setPcost(int pcost) {
-		this.pcost = pcost;
-	}
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 
 	public int getPrice() {
@@ -61,25 +45,8 @@ public class MoneyVO {
 		this.price = price;
 	}
 
-	public String getPcode() {
-		return pcode;
-	}
-
-	public void setPcode(String pcode) {
-		this.pcode = pcode;
-	}
-
-	public Timestamp getSdate() {
-		return sdate;
-	}
-
-	public void setSdate(Timestamp sdate) {
-		this.sdate = sdate;
-	}
-
 	@Override
 	public String toString() {
-		return "MoneyVO [custno=" + custno + ", salenol=" + salenol + ", pcost=" + pcost + ", amount=" + amount
-				+ ", price=" + price + ", pcode=" + pcode + ", sdate=" + sdate + "]";
+		return "MoneyVO [custno=" + custno + ", custname=" + custname + ", grade=" + grade + ", price=" + price + "]";
 	}
 }

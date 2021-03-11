@@ -68,7 +68,7 @@
 			<td>통신사 [SK, KT, LG]</td> <td><input type="radio" name="address" value="SK">SK <input type="radio" name="address" value="KT">KT <input type="radio" name="address" value="LG">LG</td>
 		</tr>
 		<tr>
-			<td>가입일자</td> <td><input type="text" name="joindate" value="<%= regDate %>" readonly></td>
+			<td>가입일자</td> <td><input type="text" name="joindate" value="<%= regDate.replace("-", "") %>" readonly></td>
 		</tr>
 		<tr>
 			<td>고객등급 [A:VIP, B:일반, C:직원]</td>

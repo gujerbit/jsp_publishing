@@ -10,6 +10,7 @@ import java.util.Date;
 
 import util.JDBCUtil;
 import vo.MemberVO;
+import vo.MoneyVO;
 
 public class MemberDAO {
 	private static MemberDAO instance = new MemberDAO();
@@ -50,7 +51,7 @@ public class MemberDAO {
 		return now;
 	}
 	
-	public int InsertMember(String custname, String phone, String address, String grade, String city) {
+	public int insertMember(String custname, String phone, String address, String grade, String city) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO member_tbl_02 VALUES(?, ?, ?, ?, SYSDATE, ?, ?)";
@@ -108,5 +109,58 @@ public class MemberDAO {
 		return list;
 	}
 	
+	public int updateMember(int id, String name, String phone, String address, String grade, String city) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE member_tbl_02 SET custname = ?, phone = ?, address = ?, grade = ?, city = ? WHERE custno = ?";
+		int result = -1;
+		
+		try {
+			con = JDBCUtil.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone);
+			pstmt.setString(3, address);
+			pstmt.setString(4, grade);
+			pstmt.setString(5, city);
+			pstmt.setInt(6, id);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(null, pstmt, con);
+		}
+		
+		return result;
+	}
 	
+	public ArrayList<MoneyVO> getAllMoney() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT custno, custname, grade, SUM(price) FROM member_tbl_02 JOIN money_tbl_02 USING(custno) GROUP BY(custno, custname, grade) ORDER BY SUM(price) DESC";
+		ArrayList<MoneyVO> list = new ArrayList<MoneyVO>();
+		
+		try {
+			con = JDBCUtil.getConnection();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MoneyVO vo;
+				int custno = rs.getInt(1);
+				String custname = rs.getString(2);
+				String grade = rs.getString(3);
+				int price = rs.getInt(4);
+				vo = new MoneyVO(custno, custname, grade, price);
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, pstmt, con);
+		}
+		
+		return list;
+	}
 }

@@ -26,6 +26,7 @@
 			}
 			
 			String city = "";
+			String tempCity = vo.getCity();
 			if(vo.getCity().equals("01")) {
 				city = "서울";
 			} else if(vo.getCity().equals("10")) {
@@ -41,7 +42,7 @@
 			}
 %>
 			<tr>
-				<td><a href="Update.do"><%= vo.getCustno() %></a></td> <td><%= vo.getCustname() %></td> <td><%= vo.getPhone() %></td> <td><%= vo.getAddress() %></td> <td><%= vo.getJoindate().toString().substring(0, vo.getJoindate().toString().length()-10) %></td> <td><%= grade %></td> <td><%= city %></td>
+				<td><a href="member_update.jsp?id=<%= vo.getCustno() %>&name=<%= vo.getCustname() %>&phone=<%= vo.getPhone() %>&address=<%= vo.getAddress() %>&joindate=<%= vo.getJoindate().toString().substring(0, vo.getJoindate().toString().length()-10) %>&grade=<%= grade %>&city=<%= tempCity %>"><%= vo.getCustno() %></a></td> <td><%= vo.getCustname() %></td> <td><%= vo.getPhone() %></td> <td><%= vo.getAddress() %></td> <td><%= vo.getJoindate().toString().substring(0, vo.getJoindate().toString().length()-10) %></td> <td><%= grade %></td> <td><%= city %></td>
 			</tr>			
 <%
 		}

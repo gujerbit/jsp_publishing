@@ -26,6 +26,7 @@ public class FrontController extends HttpServlet {
 			map.put("/Register.do", new RegisterController());
 			map.put("/Select.do", new SelectController());
 			map.put("/Update.do", new UpdateController());
+			map.put("/Money.do", new MoneyController());
 		}
 	
 	@Override
