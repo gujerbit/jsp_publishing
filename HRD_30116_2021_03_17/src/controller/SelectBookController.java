@@ -14,8 +14,12 @@ public class SelectBookController implements Controller {
 	@Override
 	public void execute(ServletRequest req, ServletResponse res) throws ServletException, IOException {
 		MemberDAO dao = MemberDAO.getInstance();
+		String path = "selectBook.jsp";
 		ArrayList<BookVO> list1 = dao.getMemberTotal();
 		ArrayList<BookVO> list2 = dao.getBookTotal();
-		ArrayList<BookVO> list = dao.memberBookTotal(list1, list2);
+		
+		req.setAttribute("list1", list1);
+		req.setAttribute("list2", list2);
+		req.getRequestDispatcher(path).forward(req, res);
 	}
 }

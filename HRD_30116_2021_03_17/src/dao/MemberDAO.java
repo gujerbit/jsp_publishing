@@ -164,7 +164,7 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT custno, custname, COUNT(custno) FROM mem_tbl_book JOIN rent_tbl_book USING(custno) GROUP BY(custno, custname) ORDER BY COUNT(custno) DESC";
-		ArrayList<BookVO> list = null;
+		ArrayList<BookVO> list = new ArrayList<BookVO>();
 		
 		try {
 			conn = JDBCUtil.getConnection();
@@ -191,8 +191,8 @@ public class MemberDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT bookno, COUNT(bookno) FROM mem_tbl_book JOIN rent_tbl_book USING(custno) GROUP BY(bookno, custname) ORDER BY COUNT(bookno) DESC";
-		ArrayList<BookVO> list = null;
+		String sql = "SELECT bookno, COUNT(bookno) FROM mem_tbl_book JOIN rent_tbl_book USING(custno) GROUP BY(bookno) ORDER BY COUNT(bookno) DESC";
+		ArrayList<BookVO> list = new ArrayList<BookVO>();
 		
 		try {
 			conn = JDBCUtil.getConnection();
@@ -209,23 +209,6 @@ public class MemberDAO {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(rs, pstmt, conn);
-		}
-		
-		return list;
-	}
-	
-	public ArrayList<BookVO> memberBookTotal(ArrayList<BookVO> list1, ArrayList<BookVO> list2) {
-		ArrayList<BookVO> list = new ArrayList<BookVO>();
-		BookVO vo = null;
-		
-		for(int i = 0; i < list1.size(); i++) {
-			int custno = list1.get(i).getCustno();
-			int bookno = list2.get(i).getBookno();
-			String custname = list1.get(i).getCustname();
-			int memberTotal = list1.get(i).getMemberTotal();
-			int bookTotal = list2.get(2).getBookTotal();
-			vo = new BookVO(custno, bookno, custname, memberTotal, bookTotal);
-			list.add(vo);
 		}
 		
 		return list;
