@@ -1,0 +1,39 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	list-style: none;
+	color: #333333;
+}
+
+.container {
+	display: grid;
+	grid-template-rows: 150px 250px 50px;
+	margin: 0 auto;
+	width: 1200px;
+}
+
+header {
+	text-align: center;
+}
+
+.menuBar {
+	background-color: #aaaaaa;
+	height: 50px;
+	line-height: 50px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.menuBar a {
+	color: #ffffff;
+}
+
+main {
+	margin: 0 auto;
+}
+
+footer {
+	text-align: center;
+}
