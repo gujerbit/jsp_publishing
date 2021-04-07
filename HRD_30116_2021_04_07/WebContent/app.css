@@ -1,0 +1,61 @@
+.container {
+	position: relative;
+}
+
+main {
+	width: 400px;
+	height: 150px;
+	border: 1px solid #000000;
+	padding-top: 20px;
+}
+
+.home button {
+	width: 100px;
+	height: 40px;
+	margin: 13px;
+}
+
+p {
+	background-color: #ffffff;
+	position: absolute;
+	top: 17%;
+	left: 2%;
+}
+
+.view button, .btn {
+	width: 80px;
+	height: 30px;
+}
+
+.view form {
+	margin: 10px;
+}
+
+.set {
+	height: 200px;
+}
+
+.set button, .btn {
+	width: 80px;
+	height: 30px;
+	margin: 10px;
+}
+
+.set span:nth-child(1) { margin-left: 40px; }
+.set span:nth-child(3) { margin-left: 8px; }
+.set span:nth-child(5) { margin-left: 8px; }
+.set span:nth-child(7) { margin-left: 40px; }
+.set span:nth-child(9) { margin-left: 40px; }
+.set span:nth-child(11) { margin-left: 23px; }
+
+.del {
+	height: 100px;
+}
+
+.del button {
+	width: 80px;
+	height: 30px;
+}
+
+.del span:nth-child(1) { margin-left: 40px; }
+.del span:nth-child(3) { margin-left: 8px; }
